@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#1a0a2e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Ramzan 2026 – Lahore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #0d0620;
+    --purple: #1a0a2e;
+    --gold: #c9a84c;
+    --gold-light: #f0d080;
+    --gold-pale: #f5e8b0;
+    --teal: #0e9e8f;
+    --rose: #c94a6a;
+    --cream: #fdf6e3;
+    --text: #e8dfc8;
+    --dim: #9d8f70;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--deep);
+    color: var(--text);
+    font-family: 'Lora', Georgia, serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Starry background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 50% at 50% 0%, #2a0d5e 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 30% 100%, #0a1a3d 0%, transparent 50%),
+      var(--deep);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .stars {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--dur, 3s) ease-in-out infinite alternate;
+    animation-delay: var(--delay, 0s);
+  }
+
+  @keyframes twinkle {
+    from { opacity: 0.1; transform: scale(0.8); }
+    to { opacity: 0.9; transform: scale(1.2); }
+  }
+
+  .moon-crescent {
+    position: fixed;
+    top: -20px;
+    right: 20px;
+    width: 120px;
+    height: 120px;
+    z-index: 1;
+    animation: moonGlow 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes moonGlow {
+    from { filter: drop-shadow(0 0 15px rgba(201,168,76,0.4)); }
+    to { filter: drop-shadow(0 0 35px rgba(201,168,76,0.8)); }
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 16px 16px 100px;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 60px 0 24px;
+    animation: fadeDown 0.8s ease both;
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .arabic-title {
+    font-family: 'Noto Nastaliq Urdu', serif;
+    font-size: clamp(28px, 8vw, 42px);
+    color: var(--gold);
+    line-height: 1.4;
+    text-shadow: 0 0 30px rgba(201,168,76,0.6);
+    margin-bottom: 6px;
+  }
+
+  .en-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(11px, 3vw, 14px);
+    letter-spacing: 0.3em;
+    color: var(--gold-pale);
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 16px auto;
+    max-width: 260px;
+  }
+
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .divider-gem {
+    color: var(--gold);
+    font-size: 14px;
+  }
+
+  /* Day card */
+  .day-card {
+    background: linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(201,168,76,0.04) 100%);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 20px;
+    padding: 24px 20px;
+    text-align: center;
+    margin-bottom: 16px;
+    backdrop-filter: blur(10px);
+    animation: fadeUp 0.6s ease 0.1s both;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .day-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(201,168,76,0.03) 60deg, transparent 120deg);
+    animation: rotate 20s linear infinite;
+  }
+
+  @keyframes rotate {
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .ramzan-day-label {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(9px, 2.5vw, 11px);
+    letter-spacing: 0.25em;
+    color: var(--dim);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .ramzan-day-num {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(48px, 14vw, 72px);
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    text-shadow: 0 0 40px rgba(201,168,76,0.5);
+  }
+
+  .ramzan-day-ordinal {
+    font-size: clamp(20px, 5vw, 28px);
+    vertical-align: super;
+    color: var(--gold-light);
+  }
+
+  .ramzan-day-text {
+    font-size: clamp(14px, 4vw, 18px);
+    color: var(--gold-pale);
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  .gregorian-date {
+    font-size: 12px;
+    color: var(--dim);
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+  }
+
+  /* Ashra badge */
+  .ashra-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(14,158,143,0.2), rgba(14,158,143,0.1));
+    border: 1px solid rgba(14,158,143,0.5);
+    border-radius: 30px;
+    padding: 8px 20px;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(9px, 2.5vw, 11px);
+    letter-spacing: 0.15em;
+    color: #5fd9cc;
+    text-transform: uppercase;
+    margin-top: 14px;
+  }
+
+  .ashra-meaning {
+    display: block;
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    color: #4ab8af;
+    margin-top: 3px;
+    letter-spacing: 0.05em;
+    font-style: italic;
+  }
+
+  /* Times grid */
+  .times-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+    animation: fadeUp 0.6s ease 0.2s both;
+  }
+
+  .time-card {
+    background: rgba(255,255,255,0.03);
+    border-radius: 18px;
+    padding: 20px 16px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(8px);
+    transition: transform 0.2s, border-color 0.2s;
+    cursor: default;
+  }
+
+  .time-card:active { transform: scale(0.97); }
+
+  .time-card.sehri {
+    border-color: rgba(100,160,255,0.3);
+    background: linear-gradient(135deg, rgba(60,100,200,0.12), rgba(60,100,200,0.04));
+  }
+
+  .time-card.iftar {
+    border-color: rgba(255,120,50,0.3);
+    background: linear-gradient(135deg, rgba(200,80,30,0.12), rgba(200,80,30,0.04));
+  }
+
+  .time-card-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .time-card-label {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(9px, 2.5vw, 11px);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .time-value {
+    font-family: 'Lora', serif;
+    font-size: clamp(22px, 6.5vw, 30px);
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .sehri .time-value { color: #8ab4f8; }
+  .iftar .time-value { color: #ffb066; }
+
+  .time-ampm {
+    font-size: clamp(11px, 3vw, 13px);
+    opacity: 0.7;
+    margin-left: 3px;
+  }
+
+  .time-sublabel {
+    font-size: 10px;
+    color: var(--dim);
+    margin-top: 6px;
+    display: block;
+    font-style: italic;
+  }
+
+  /* Countdown */
+  .countdown-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 16px;
+    padding: 16px 20px;
+    text-align: center;
+    margin-bottom: 16px;
+    animation: fadeUp 0.6s ease 0.3s both;
+  }
+
+  .countdown-label {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .countdown-time {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(28px, 8vw, 40px);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .countdown-time.sehri-mode { color: #8ab4f8; }
+  .countdown-time.iftar-mode { color: #ffb066; }
+  .countdown-time.past-mode { color: var(--dim); }
+
+  .countdown-sublabel {
+    font-size: 11px;
+    color: var(--dim);
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* Progress bar */
+  .fast-progress {
+    background: rgba(255,255,255,0.07);
+    border-radius: 100px;
+    height: 8px;
+    margin: 12px 0 4px;
+    overflow: hidden;
+  }
+
+  .fast-progress-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #8ab4f8, #ffb066);
+    transition: width 1s linear;
+    position: relative;
+  }
+
+  .fast-progress-fill::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -2px;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(255,255,255,0.8);
+    transform: translateY(50%);
+    bottom: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .fast-progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--dim);
+    font-style: italic;
+  }
+
+  /* Laylatul Qadr */
+  .qadr-card {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(80,30,120,0.15) 100%);
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 16px;
+    animation: fadeUp 0.6s ease 0.4s both;
+  }
+
+  .qadr-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .qadr-icon {
+    font-size: 28px;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  .qadr-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(11px, 3vw, 13px);
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  .qadr-subtitle {
+    font-size: 11px;
+    color: var(--dim);
+    font-style: italic;
+    margin-top: 2px;
+  }
+
+  .qadr-nights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .qadr-night {
+    flex: 1;
+    min-width: 70px;
+    text-align: center;
+    padding: 10px 8px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.2);
+    font-size: clamp(10px, 2.8vw, 12px);
+    color: var(--text);
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .qadr-night.highlighted {
+    background: rgba(201,168,76,0.15);
+    border-color: rgba(201,168,76,0.5);
+    color: var(--gold-pale);
+  }
+
+  .qadr-night.past {
+    opacity: 0.4;
+    text-decoration: line-through;
+  }
+
+  .qadr-night.tonight {
+    background: linear-gradient(135deg, rgba(201,168,76,0.3), rgba(160,80,200,0.2));
+    border-color: var(--gold);
+    animation: glowNight 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glowNight {
+    from { box-shadow: 0 0 10px rgba(201,168,76,0.3); }
+    to { box-shadow: 0 0 25px rgba(201,168,76,0.7); }
+  }
+
+  .qadr-night-label {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    display: block;
+    color: var(--dim);
+    margin-bottom: 4px;
+  }
+
+  .qadr-night-num {
+    font-size: clamp(16px, 4.5vw, 20px);
+    font-weight: 600;
+    color: var(--gold);
+  }
+
+  .qadr-night-date {
+    font-size: 9px;
+    color: var(--dim);
+    display: block;
+    margin-top: 3px;
+  }
+
+  .tonight-badge {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--deep);
+    font-size: 8px;
+    font-family: 'Cinzel Decorative', serif;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+    letter-spacing: 0.1em;
+  }
+
+  /* Info cards */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+    animation: fadeUp 0.6s ease 0.5s both;
+  }
+
+  .info-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 16px 14px;
+    text-align: center;
+  }
+
+  .info-card-icon { font-size: 24px; display: block; margin-bottom: 6px; }
+  .info-card-label {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--dim);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .info-card-value {
+    font-size: clamp(14px, 4vw, 17px);
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  /* Notification button */
+  .notif-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 16px;
+    animation: fadeUp 0.6s ease 0.55s both;
+  }
+
+  .notif-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(10px, 2.8vw, 12px);
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .notif-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #c9a84c, #8b6820);
+    color: var(--deep);
+    border: none;
+    border-radius: 12px;
+    padding: 14px;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(10px, 3vw, 12px);
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 700;
+  }
+
+  .notif-btn:active { transform: scale(0.97); }
+  .notif-btn:hover { background: linear-gradient(135deg, #f0d080, #c9a84c); }
+
+  .notif-btn.enabled {
+    background: linear-gradient(135deg, #0e9e8f, #065e56);
+    color: white;
+  }
+
+  .notif-status {
+    font-size: 11px;
+    color: var(--dim);
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  /* Dua card */
+  .dua-card {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(14,158,143,0.05) 100%);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 18px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 16px;
+    animation: fadeUp 0.6s ease 0.6s both;
+  }
+
+  .dua-arabic {
+    font-family: 'Noto Nastaliq Urdu', serif;
+    font-size: clamp(16px, 4.5vw, 20px);
+    color: var(--gold-pale);
+    line-height: 2;
+    margin-bottom: 8px;
+  }
+
+  .dua-translation {
+    font-size: 11px;
+    color: var(--dim);
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .dua-label {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--dim);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 16px;
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 0.1em;
+    animation: fadeUp 0.6s ease 0.7s both;
+  }
+
+  /* Loader */
+  .loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    gap: 16px;
+  }
+
+  .loader-ring {
+    width: 48px;
+    height: 48px;
+    border: 3px solid rgba(201,168,76,0.2);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .loader-text {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--dim);
+  }
+
+  /* Error */
+  .error-card {
+    background: rgba(200,30,30,0.1);
+    border: 1px solid rgba(200,30,30,0.3);
+    border-radius: 14px;
+    padding: 16px;
+    text-align: center;
+    font-size: 13px;
+    color: #ff8888;
+    margin-bottom: 16px;
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 360px) {
+    .times-grid { grid-template-columns: 1fr; }
+    .info-grid { grid-template-columns: 1fr; }
+    .qadr-nights { flex-direction: column; }
+  }
+
+  /* Urdu section toggle */
+  .urdu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 11px;
+    color: var(--dim);
+    cursor: pointer;
+  }
+
+  .urdu-switch {
+    width: 36px;
+    height: 20px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: background 0.3s;
+  }
+
+  .urdu-switch.on { background: rgba(201,168,76,0.4); border-color: var(--gold); }
+
+  .urdu-switch::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: left 0.3s;
+  }
+
+  .urdu-switch.on::after { left: 18px; }
+
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+
+<!-- Stars -->
+<div class="stars" id="starsContainer"></div>
+
+<!-- Moon SVG -->
+<svg class="moon-crescent" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <circle cx="60" cy="60" r="45" fill="#f5e8b0" filter="url(#glow)" opacity="0.9"/>
+  <circle cx="82" cy="48" r="38" fill="#0d0620"/>
+  <circle cx="52" cy="72" r="2.5" fill="rgba(201,168,76,0.5)"/>
+  <circle cx="70" cy="55" r="1.5" fill="rgba(201,168,76,0.3)"/>
+</svg>
+
+<div class="container">
+  <!-- Header -->
+  <div class="header">
+    <div class="arabic-title">رمضان المبارک</div>
+    <div class="en-title">Ramzan Mubarak</div>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-gem">✦</div>
+      <div class="divider-line"></div>
+    </div>
+    <div style="font-size:11px; color:var(--dim); letter-spacing:0.1em;">Lahore, Pakistan · Fiqa Hanafi</div>
+  </div>
+
+  <!-- Day card -->
+  <div class="day-card" id="dayCard">
+    <div class="loader">
+      <div class="loader-ring"></div>
+      <div class="loader-text">Loading Timings...</div>
+    </div>
+  </div>
+
+  <!-- Times grid -->
+  <div class="times-grid" id="timesGrid" style="display:none">
+    <div class="time-card sehri">
+      <span class="time-card-icon">🌙</span>
+      <span class="time-card-label">Sehri Ends</span>
+      <div class="time-value" id="sehriTime">—</div>
+      <span class="time-sublabel">Fajr Azan (Hanafi)</span>
+    </div>
+    <div class="time-card iftar">
+      <span class="time-card-icon">🌅</span>
+      <span class="time-card-label">Iftar Time</span>
+      <div class="time-value" id="iftarTime">—</div>
+      <span class="time-sublabel">Maghrib Azan</span>
+    </div>
+  </div>
+
+  <!-- Countdown -->
+  <div class="countdown-card" id="countdownCard" style="display:none">
+    <span class="countdown-label" id="countdownLabel">Time Until Iftar</span>
+    <div class="countdown-time" id="countdownTime">--:--:--</div>
+    <div class="fast-progress">
+      <div class="fast-progress-fill" id="fastProgress" style="width:0%"></div>
+    </div>
+    <div class="fast-progress-labels">
+      <span>Sehri</span>
+      <span id="fastingHours">Fasting Duration</span>
+      <span>Iftar</span>
+    </div>
+    <div class="countdown-sublabel" id="countdownSublabel"></div>
+  </div>
+
+  <!-- Error -->
+  <div class="error-card hidden" id="errorCard">
+    ⚠️ Could not fetch today's timings. Showing estimated times. Please check your connection.
+  </div>
+
+  <!-- Laylatul Qadr -->
+  <div class="qadr-card" id="qadrCard" style="display:none">
+    <div class="qadr-header">
+      <span class="qadr-icon">✨</span>
+      <div>
+        <div class="qadr-title">Laylatul Qadr</div>
+        <div class="qadr-subtitle">Probable nights — Last 10 odd nights</div>
+      </div>
+    </div>
+    <div class="qadr-nights" id="qadrNights"></div>
+  </div>
+
+  <!-- Info grid -->
+  <div class="info-grid" id="infoGrid" style="display:none">
+    <div class="info-card">
+      <span class="info-card-icon">📅</span>
+      <span class="info-card-label">Days Remaining</span>
+      <div class="info-card-value" id="daysLeft">—</div>
+    </div>
+    <div class="info-card">
+      <span class="info-card-icon">⏱️</span>
+      <span class="info-card-label">Fasting Duration</span>
+      <div class="info-card-value" id="fastDuration">—</div>
+    </div>
+    <div class="info-card">
+      <span class="info-card-icon">🕌</span>
+      <span class="info-card-label">Taraweeh</span>
+      <div class="info-card-value">After Isha</div>
+    </div>
+    <div class="info-card">
+      <span class="info-card-icon">📿</span>
+      <span class="info-card-label">Eid ul-Fitr</span>
+      <div class="info-card-value">~21 Mar</div>
+    </div>
+  </div>
+
+  <!-- Notifications -->
+  <div class="notif-card">
+    <div class="notif-title">🔔 Prayer Notifications</div>
+    <button class="notif-btn" id="notifBtn" onclick="requestNotifications()">
+      Enable Sehri & Iftar Alerts
+    </button>
+    <div class="notif-status" id="notifStatus">Receive reminders 15 minutes before Sehri ends and at Iftar time</div>
+  </div>
+
+  <!-- Sehri Dua -->
+  <div class="dua-card">
+    <span class="dua-label">Sehri Dua · سحری کی دعا</span>
+    <div class="dua-arabic">وَبِصَوْمِ غَدٍ نَّوَيْتُ مِنْ شَهْرِ رَمَضَانَ</div>
+    <div class="dua-translation">"I intend to keep the fast for tomorrow in the month of Ramzan."</div>
+  </div>
+
+  <!-- Iftar Dua -->
+  <div class="dua-card">
+    <span class="dua-label">Iftar Dua · افطاری کی دعا</span>
+    <div class="dua-arabic">اَللّٰهُمَّ اِنِّى لَكَ صُمْتُ وَبِكَ آمَنْتُ وَعَلَيْكَ تَوَكَّلْتُ وَعَلٰى رِزْقِكَ اَفْطَرْتُ</div>
+    <div class="dua-translation">"O Allah! I fasted for You, I believe in You, I trust in You, and I break my fast with Your sustenance."</div>
+  </div>
+
+  <div class="footer">
+    Data via AlAdhan API · Hanafi Fiqh · Lahore 31.5°N 74.3°E<br>
+    <span style="margin-top:4px;display:block;">Ramzan 1447 AH · 2026 CE</span>
+  </div>
+</div>
+
+<script>
+// ─── Config ─────────────────────────────────────────────────────────────────
+const RAMZAN_START = new Date(2026, 1, 19); // Feb 19, 2026 (month is 0-indexed)
+const RAMZAN_END_DAY = 30;
+const LAHORE_LAT = 31.5497;
+const LAHORE_LNG = 74.3436;
+// Aladhan method=1 is Karachi / Pakistan (Hanafi), school=1 = Hanafi for Asr
+const API_URL = (date) => 
+  `https://api.aladhan.com/v1/timingsByCity/${date}?city=Lahore&country=Pakistan&method=1&school=1`;
+
+let sehriEnd = null, iftarTime = null;
+let notifEnabled = false;
+let notifTimers = [];
+let countdownInterval = null;
+
+// ─── Stars ───────────────────────────────────────────────────────────────────
+function createStars() {
+  const container = document.getElementById('starsContainer');
+  for (let i = 0; i < 80; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    const size = Math.random() * 2.5 + 0.5;
+    star.style.cssText = `
+      width:${size}px; height:${size}px;
+      top:${Math.random()*100}%;
+      left:${Math.random()*100}%;
+      --dur:${2+Math.random()*4}s;
+      --delay:${Math.random()*4}s;
+      opacity:${Math.random()*0.6+0.1};
+    `;
+    container.appendChild(star);
+  }
+}
+
+// ─── Date helpers ─────────────────────────────────────────────────────────────
+function getRamzanDay(date) {
+  const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  const start = new Date(RAMZAN_START.getFullYear(), RAMZAN_START.getMonth(), RAMZAN_START.getDate());
+  const diff = Math.floor((d - start) / 86400000) + 1;
+  return diff;
+}
+
+function getOrdinal(n) {
+  const s = ['th','st','nd','rd'];
+  const v = n%100;
+  return s[(v-20)%10]||s[v]||s[0];
+}
+
+function getAshra(day) {
+  if (day <= 10) return { num: 1, name: '1st Ashra', arabic: 'پہلا عشرہ', meaning: 'Days of Mercy — رحمت', teal: '#5fd9cc' };
+  if (day <= 20) return { num: 2, name: '2nd Ashra', arabic: 'دوسرا عشرہ', meaning: 'Days of Forgiveness — مغفرت', teal: '#f8c88a' };
+  return { num: 3, name: '3rd Ashra', arabic: 'تیسرا عشرہ', meaning: 'Refuge from Hellfire — نجات', teal: '#ff9eb5' };
+}
+
+function formatTime(timeStr) {
+  // timeStr is "HH:MM" 24h
+  const [h, m] = timeStr.split(':').map(Number);
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  const hh = h % 12 || 12;
+  return { time: `${hh}:${String(m).padStart(2,'0')}`, ampm };
+}
+
+function parseTimeToday(timeStr) {
+  // Returns a Date object for today at the given HH:MM
+  const [h, m] = timeStr.split(':').map(Number);
+  const now = new Date();
+  return new Date(now.getFullYear(), now.getMonth(), now.getDate(), h, m, 0);
+}
+
+function formatDuration(ms) {
+  const totalSecs = Math.floor(ms / 1000);
+  const h = Math.floor(totalSecs / 3600);
+  const m = Math.floor((totalSecs % 3600) / 60);
+  return `${h}h ${m}m`;
+}
+
+// ─── Render day info ──────────────────────────────────────────────────────────
+function renderDayCard(day) {
+  const ashra = getAshra(day);
+  const daysLeft = RAMZAN_END_DAY - day;
+  const today = new Date();
+  const gregorian = today.toLocaleDateString('en-PK', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+  const ord = getOrdinal(day);
+  
+  document.getElementById('dayCard').innerHTML = `
+    <div class="ramzan-day-label">Ramzan Day</div>
+    <div class="ramzan-day-num">
+      ${day}<span class="ramzan-day-ordinal">${ord}</span>
+    </div>
+    <div class="ramzan-day-text">Ramzan Mubarak</div>
+    <div class="gregorian-date">${gregorian}</div>
+    <div>
+      <div class="ashra-badge" style="border-color:rgba(${ashra.num===1?'95,217,204':ashra.num===2?'248,200,138':'255,158,181'},0.5); color:${ashra.teal}">
+        ${ashra.name} — ${ashra.arabic}
+        <span class="ashra-meaning">${ashra.meaning}</span>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('daysLeft').textContent = daysLeft > 0 ? `${daysLeft} days` : 'Last day!';
+}
+
+// ─── Render Laylatul Qadr ─────────────────────────────────────────────────────
+function renderQadr(currentDay) {
+  // Last 10 odd nights: 21st, 23rd, 25th, 27th, 29th nights
+  // Night of 21 starts evening of day 20, etc.
+  const qadrNights = [21, 23, 25, 27, 29];
+  const today = new Date();
+  
+  let html = '';
+  qadrNights.forEach(nightNum => {
+    // Night of 21 = eve of day 21 = day 21 roza starts, night BEFORE 21st fast
+    // Convention: "21st night" = the night between day 20 and 21
+    // More common: night falls after Maghrib of that day
+    // "Night of 21" = after Maghrib of Ramzan day 20 counting
+    // We'll say: night X = after Maghrib of day X-1
+    const roznDay = nightNum; // the fast of that day
+    const isPast = currentDay > roznDay;
+    const isTonight = currentDay === roznDay - 1 || currentDay === roznDay;
+    // night starts evening of roznDay-1
+    const eveningDay = roznDay - 1;
+    
+    // Calculate the calendar date of this night
+    const nightDate = new Date(RAMZAN_START);
+    nightDate.setDate(RAMZAN_START.getDate() + roznDay - 2); // eve of roznDay
+    const nightDateStr = nightDate.toLocaleDateString('en-PK', { day:'numeric', month:'short' });
+    
+    const classes = `qadr-night ${isPast ? 'past' : ''} ${isTonight ? 'tonight highlighted' : nightNum === 27 ? 'highlighted' : ''}`;
+    
+    html += `<div class="${classes}">
+      ${isTonight ? '<span class="tonight-badge">Tonight!</span>' : ''}
+      <span class="qadr-night-label">Night of</span>
+      <div class="qadr-night-num">${nightNum}</div>
+      <span class="qadr-night-date">${nightDateStr}</span>
+      ${nightNum === 27 ? '<span style="font-size:9px;color:var(--gold);display:block;margin-top:2px;">Most likely</span>' : ''}
+    </div>`;
+  });
+  
+  document.getElementById('qadrNights').innerHTML = html;
+  document.getElementById('qadrCard').style.display = 'block';
+}
+
+// ─── Countdown ───────────────────────────────────────────────────────────────
+function startCountdown() {
+  if (countdownInterval) clearInterval(countdownInterval);
+  
+  const sehriDate = parseTimeToday(sehriEnd);
+  const iftarDate = parseTimeToday(iftarTime);
+  const sehriDuration = iftarDate - sehriDate; // total fast ms
+  
+  function tick() {
+    const now = new Date();
+    const countdownEl = document.getElementById('countdownTime');
+    const labelEl = document.getElementById('countdownLabel');
+    const subEl = document.getElementById('countdownSublabel');
+    const progressEl = document.getElementById('fastProgress');
+    
+    let diff, mode;
+    
+    if (now < sehriDate) {
+      // Before Sehri ends (middle of night)
+      diff = sehriDate - now;
+      mode = 'sehri-mode';
+      labelEl.textContent = 'Sehri ends in';
+      subEl.textContent = '⚠️ Close your fast before Fajr Azan';
+      progressEl.style.width = '2%';
+    } else if (now < iftarDate) {
+      // Fasting period
+      diff = iftarDate - now;
+      mode = 'iftar-mode';
+      labelEl.textContent = 'Time Until Iftar';
+      const elapsed = now - sehriDate;
+      const pct = Math.min(100, (elapsed / sehriDuration) * 100);
+      progressEl.style.width = pct + '%';
+      const remaining = formatDuration(diff);
+      subEl.textContent = `${remaining} of fasting completed so far`;
+    } else {
+      // After Iftar
+      diff = 0;
+      mode = 'past-mode';
+      labelEl.textContent = 'Iftar Time';
+      subEl.textContent = '🌙 Iftar has passed. Ramzan Mubarak!';
+      progressEl.style.width = '100%';
+      countdownEl.textContent = 'Iftar Done!';
+      countdownEl.className = `countdown-time ${mode}`;
+      return;
+    }
+    
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    countdownEl.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    countdownEl.className = `countdown-time ${mode}`;
+  }
+  
+  tick();
+  countdownInterval = setInterval(tick, 1000);
+}
+
+// ─── API Fetch ────────────────────────────────────────────────────────────────
+async function fetchTimings() {
+  const today = new Date();
+  const dd = String(today.getDate()).padStart(2,'0');
+  const mm = String(today.getMonth()+1).padStart(2,'0');
+  const yyyy = today.getFullYear();
+  const dateStr = `${dd}-${mm}-${yyyy}`;
+  
+  try {
+    const resp = await fetch(API_URL(dateStr));
+    if (!resp.ok) throw new Error('API error');
+    const data = await resp.json();
+    const timings = data.data.timings;
+    
+    // Hanafi: Fajr = Sehri end, Maghrib = Iftar
+    // Aladhan returns "HH:MM (PKT)" – strip timezone if present
+    sehriEnd = timings.Fajr.split(' ')[0];
+    iftarTime = timings.Maghrib.split(' ')[0];
+    
+    return true;
+  } catch(e) {
+    // Fallback approximate times for Feb 19 Lahore
+    sehriEnd = '05:19';
+    iftarTime = '17:53';
+    document.getElementById('errorCard').classList.remove('hidden');
+    return false;
+  }
+}
+
+// ─── Notifications ────────────────────────────────────────────────────────────
+function scheduleNotification(title, body, triggerDate) {
+  const delay = triggerDate - new Date();
+  if (delay < 0) return;
+  const t = setTimeout(() => {
+    new Notification(title, {
+      body,
+      icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🌙</text></svg>',
+      badge: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🌙</text></svg>',
+      silent: false
+    });
+  }, delay);
+  notifTimers.push(t);
+}
+
+async function requestNotifications() {
+  if (!('Notification' in window)) {
+    document.getElementById('notifStatus').textContent = '❌ Notifications not supported in this browser.';
+    return;
+  }
+  
+  const perm = await Notification.requestPermission();
+  if (perm !== 'granted') {
+    document.getElementById('notifStatus').textContent = '❌ Permission denied. Please enable notifications in browser settings.';
+    return;
+  }
+  
+  notifEnabled = true;
+  document.getElementById('notifBtn').textContent = '✅ Notifications Enabled';
+  document.getElementById('notifBtn').classList.add('enabled');
+  document.getElementById('notifStatus').textContent = '🔔 You will receive Sehri (15 min warning) and Iftar alerts daily.';
+  
+  scheduleAllNotifications();
+}
+
+function scheduleAllNotifications() {
+  notifTimers.forEach(t => clearTimeout(t));
+  notifTimers = [];
+  
+  if (!sehriEnd || !iftarTime) return;
+  
+  const sehriDate = parseTimeToday(sehriEnd);
+  const iftarDate = parseTimeToday(iftarTime);
+  
+  // 15 min before Sehri ends
+  const sehriWarn = new Date(sehriDate.getTime() - 15 * 60 * 1000);
+  scheduleNotification(
+    '⏰ Sehri Alert — 15 Minutes Left!',
+    `Sehri ends at ${document.getElementById('sehriTime').textContent.trim()}. Finish your meal!`,
+    sehriWarn
+  );
+  
+  // At Iftar
+  scheduleNotification(
+    '🌅 Iftar Time!',
+    `Maghrib Azan — Time to break your fast. Ramzan Mubarak! 🌙`,
+    iftarDate
+  );
+  
+  // Check if any qadr night is tonight and notify
+  scheduleQadrNotification();
+}
+
+function scheduleQadrNotification() {
+  const today = new Date();
+  const ramzanDay = getRamzanDay(today);
+  const qadrNights = [21, 23, 25, 27, 29];
+  
+  if (qadrNights.includes(ramzanDay)) {
+    // Notify after Maghrib about Laylatul Qadr
+    const iftarDate = parseTimeToday(iftarTime);
+    const qadrAlert = new Date(iftarDate.getTime() + 5 * 60 * 1000);
+    scheduleNotification(
+      '✨ Laylatul Qadr Tonight!',
+      `Tonight is the ${ramzanDay}th night — one of the probable nights of Laylatul Qadr. Engage in extra prayers and dhikr!`,
+      qadrAlert
+    );
+  }
+}
+
+// ─── Main init ────────────────────────────────────────────────────────────────
+async function init() {
+  createStars();
+  
+  const today = new Date();
+  const ramzanDay = getRamzanDay(today);
+  
+  // Check if we're in Ramzan
+  if (ramzanDay < 1 || ramzanDay > 30) {
+    document.getElementById('dayCard').innerHTML = `
+      <div style="text-align:center;padding:20px;">
+        <div style="font-size:40px;margin-bottom:12px;">🌙</div>
+        <div style="font-family:'Cinzel Decorative',serif;font-size:13px;color:var(--gold);margin-bottom:8px;">
+          ${ramzanDay < 1 ? 'Ramzan Begins' : 'Ramzan Has Ended'}
+        </div>
+        <div style="font-size:12px;color:var(--dim);">
+          ${ramzanDay < 1 
+            ? 'Ramzan 1447 AH begins February 19, 2026 InshaAllah.' 
+            : 'Eid Mubarak! May Allah accept your ibadah.'}
+        </div>
+      </div>`;
+    return;
+  }
+  
+  // Fetch API timings
+  await fetchTimings();
+  
+  // Render day card
+  renderDayCard(ramzanDay);
+  
+  // Render times
+  const sehri = formatTime(sehriEnd);
+  const iftar = formatTime(iftarTime);
+  
+  document.getElementById('sehriTime').innerHTML = 
+    `${sehri.time}<span class="time-ampm">${sehri.ampm}</span>`;
+  document.getElementById('iftarTime').innerHTML = 
+    `${iftar.time}<span class="time-ampm">${iftar.ampm}</span>`;
+  
+  // Fasting duration
+  const sehriMs = parseTimeToday(sehriEnd).getTime();
+  const iftarMs = parseTimeToday(iftarTime).getTime();
+  const fastMs = iftarMs - sehriMs;
+  const fastH = Math.floor(fastMs / 3600000);
+  const fastM = Math.floor((fastMs % 3600000) / 60000);
+  document.getElementById('fastDuration').textContent = `${fastH}h ${fastM}m`;
+  document.getElementById('fastingHours').textContent = `${fastH}h ${fastM}m`;
+  
+  // Show elements
+  document.getElementById('timesGrid').style.display = 'grid';
+  document.getElementById('countdownCard').style.display = 'block';
+  document.getElementById('infoGrid').style.display = 'grid';
+  
+  // Render Qadr nights
+  renderQadr(ramzanDay);
+  
+  // Start countdown
+  startCountdown();
+  
+  // Check if notifs already granted
+  if ('Notification' in window && Notification.permission === 'granted') {
+    notifEnabled = true;
+    document.getElementById('notifBtn').textContent = '✅ Notifications Active';
+    document.getElementById('notifBtn').classList.add('enabled');
+    document.getElementById('notifStatus').textContent = '🔔 Sehri & Iftar notifications scheduled for today.';
+    scheduleAllNotifications();
+  }
+}
+
+// Run
+init();
+</script>
+</body>
+</html>
